@@ -5,19 +5,25 @@ public class Counter : MonoBehaviour
 {
     public int Clicks = 0;
     [SerializeField] private TextMeshProUGUI ClickTextMeshPro;
-    private Animator _Animator;
+    private Animator _TextAnimator;
+    private Animator _ButtonAnimator;
+    [SerializeField] private ParticleSystem ParticleSystem;
 
     private void Start()
     {
-        _Animator = GetComponent<Animator>();
+        _ButtonAnimator = GetComponent<Animator>();
+        _TextAnimator = ClickTextMeshPro.GetComponent<Animator>();
         GetScore();
     }
     public void AddScore()
     {
         Clicks++;
         ClickTextMeshPro.text = Clicks.ToString();
-        _Animator.Rebind();
-        _Animator.SetBool("Click", true);
+        _ButtonAnimator.Rebind();
+        _ButtonAnimator.SetBool("Click", true);
+        _TextAnimator.Rebind();
+        _TextAnimator.SetBool("Click" + Random.Range(1, 2+1), true);
+        ParticleSystem.Play();
         SaveScore();
     }
     public void SaveScore()
