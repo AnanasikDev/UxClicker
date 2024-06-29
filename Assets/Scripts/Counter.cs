@@ -7,7 +7,7 @@ public class Counter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ClickTextMeshPro;
     private Animator _TextAnimator;
     private Animator _ButtonAnimator;
-    [SerializeField] private ParticleSystem ParticleSystem;
+    [SerializeField] private ParticleSystem ParticleSystem1;
     [SerializeField] private ParticleSystem ParticleSystem10;
     [SerializeField] private ParticleSystem ParticleSystem25;
     [SerializeField] private ParticleSystem ParticleSystem50;
@@ -76,9 +76,9 @@ public class Counter : MonoBehaviour
 
         else
         {
-            var particleSystem = Instantiate(ParticleSystem);
-            particleSystem.Play();
-            Destroy(particleSystem.gameObject, 6);
+            //var particleSystem = Instantiate(ParticleSystem);
+            ParticleSystem1.Play();
+            //Destroy(particleSystem.gameObject, particleSystem.startLifetime);
             _TextAnimator.SetTrigger("Click" + Random.Range(1, 2 + 1));
         }
 
